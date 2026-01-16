@@ -9,7 +9,6 @@ int main() {
         int n, x, temp = 0;
         cin >> n >> x;
         
-        bool flag = false;
         for (int i = 0; i < 3; i++) {
             vector< int > a(n);
             for (auto & it: a) {
@@ -17,19 +16,14 @@ int main() {
             }
 
             for (int j = 0; j < n; j++) {
-                if ((a[j] | x) == x) {
-                    temp |= x;
-                } else {
+                if ((a[j] | x) != x) {
                     break;
                 }
-            }
-            if (temp == x) {
-                flag = true;
+                temp |= a[j];
             }
         }
 
-        if (x == 0) flag = true;
-        if (flag) cout << "Yes\n";
+        if (temp == x) cout << "Yes\n";
         else cout << "No\n";
     }
 }
